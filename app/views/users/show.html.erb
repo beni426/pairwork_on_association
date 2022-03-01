@@ -1,0 +1,14 @@
+<h1><%= @user.name %>のページ</h1>
+お気に入り一覧
+<ul>
+<% if @favorite_blogs.present? %>
+  <% @favorite_blogs.each do |blog| %>
+  <li>  <%= blog.title %>
+    <%= blog.content %> 
+    <% end %></li>
+<% end %>
+</ul>
+
+<p>メールアドレス: <%= @user.email %></p>
+<br>
+<%= button_to "create a blog", blogs_path,method: :get %>

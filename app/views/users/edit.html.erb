@@ -1,0 +1,24 @@
+<%= form_with(model: @user,url: user_path, local: true, class: "edit_form") do |form| %>
+   <% if @user.errors.any? %>
+    <div class="alert alert-danger alert-login">
+     <h3><%= pluralize(@user.errors.count, "error", locale: :en)  %> prohibited this <%= @user.name %> from being saved:</h3>
+     <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg%></li>
+       <% end %>
+    </ul>
+   </div>
+   <% end %>
+    <table >
+    <ul>
+      <li>
+       <%= @user.name %>
+      </li>
+      <li><%= form.label :name %>
+       <%= form.text_field :name, class: "form-control", placeholder: t("views.users.name"), required: true %> </li>
+      <li><%= form.label :email %></li>
+       <li><%= form.email_field :email, class: "form-control", placeholder: t("views.users.email"), required: true %></li>
+       <%= form.submit "update" %>
+    </ul>
+  </table>
+ <% end %>
